@@ -71,7 +71,7 @@ public class RemoteApiHandler implements HttpHandler {
 			else {
 				// redirect to ourself
 				Headers hdr = t.getResponseHeaders();
-				hdr.add("Location", "/browse/" + real.getResourceId());
+				hdr.add("Location", "/api/" + real.getResourceId());
 				RemoteUtil.respond(t, "", 302, "text/html");
 				return null;
 			}
@@ -97,7 +97,7 @@ public class RemoteApiHandler implements HttpHandler {
 			node.put("thumbnail", thumb);
 
 			if (r instanceof VirtualVideoAction) {
-				node.put("media", "/raw/" + idForWeb);
+				node.put("media", "/media/" + idForWeb);
 				node.put("enabled", true);
 				media.add(node);
 				continue;
